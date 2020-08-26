@@ -14,7 +14,6 @@ namespace PBL_YahooFinance.ViewModels
 {
     public class LoadHistoricalPriceViewModel : Prism.Mvvm.BindableBase
     {
-        private readonly HistoricalPriceModel dto;
         #region Variables/Properties
         public ObservableCollection<HistoricalPriceModel> HistoricalPrice { get; set; }
         public SeriesCollection ChartPriceValues { get; set; }
@@ -25,7 +24,6 @@ namespace PBL_YahooFinance.ViewModels
         #region Construtctors
         public LoadHistoricalPriceViewModel()
         {
-            dto = new HistoricalPriceModel();
             HistoricalPrice = new ObservableCollection<HistoricalPriceModel>();
         }
         #endregion
@@ -34,7 +32,7 @@ namespace PBL_YahooFinance.ViewModels
         public static LoadHistoricalPriceViewModel LoadViewModel(Action<Task> onLoaded = null)
         {
             LoadHistoricalPriceViewModel viewModel = new LoadHistoricalPriceViewModel();
-
+            
             viewModel.Load().ContinueWith(t => onLoaded?.Invoke(t));
 
             return viewModel;
@@ -43,8 +41,10 @@ namespace PBL_YahooFinance.ViewModels
         {
             var result = await Yahoo.GetHistoricalAsync("AAPL", new DateTime(2017, 1, 3), DateTime.Now, Period.Daily);
 
+            HistoricalPrice.AddRange(result.ToList().ConvertAll(a => PBL_YahooFinance.BLL.Converter.ItemToFileHelperDto(a)));
+
             var closePrice = result.Select(a => a.Close).ToList();
-            var dateArray = result.Select(a => a.DateTime.ToString()).ToArray();
+            var dateArray = result.Select(a => a.DateTime.ToString("MM/dd/yyyy")).ToArray();
 
             await LoadChart(closePrice, dateArray);
 

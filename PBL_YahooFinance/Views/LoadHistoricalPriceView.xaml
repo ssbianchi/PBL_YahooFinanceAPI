@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
@@ -20,29 +20,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="10*" />
-            </Grid.RowDefinitions>
-            <Label Name="lbPath" Content="Path :" 
-                   Grid.Row="0" Grid.Column="0" 
-                   HorizontalAlignment="Right"  
-                   VerticalAlignment ="Center"
-                   MaxHeight="30"/>
-            <TextBox Name="TbxPath" 
-                     Grid.Row="0" Grid.Column="1" 
-                     HorizontalAlignment="Left"
-                     VerticalAlignment ="Center"
-                     Height="22"
-                     Width="200"
-                     Text="{Binding Path=LoadFilePath, Mode=OneWay}" 
-                     Margin="5"/>
         </Grid>
         <Grid Grid.Row="1">
             <ListView Name="LstFileCsv" 
                       Grid.Column="7" 
-                      ItemsSource="{Binding Path = FileCsvs, Mode=TwoWay}">
+                      ItemsSource="{Binding Path = HistoricalPrice, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Date" 

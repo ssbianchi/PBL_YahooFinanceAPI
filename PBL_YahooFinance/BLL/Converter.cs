@@ -10,18 +10,18 @@ namespace PBL_YahooFinance.BLL
 {
     public class Converter
     {
-        //public HistoricalPriceModel ItemToFileHelperDto(IReadOnlyList<Candle> item)
-        //{
-        //    return new HistoricalPriceModel()
-        //    {
-        //        DateTime = item.date,
-        //        OpenPrice = item.OpenPrice,
-        //        HighPrice = item.HighPrice,
-        //        LowPrice = item.LowPrice,
-        //        ClosePrice = item.ClosePrice,
-        //        AdjClosePrice = item.AdjClosePrice,
-        //        Volume = item.Volume,
-        //    };
-        //}
+        public static HistoricalPriceModel ItemToFileHelperDto(Candle item)
+        {
+            return new HistoricalPriceModel()
+            {
+                Date = item.DateTime.ToString("MM/dd/yyyy"),
+                OpenPrice = item.Open,
+                HighPrice = item.High,
+                LowPrice = item.Low,
+                ClosePrice = item.Close,
+                AdjClosePrice = item.AdjustedClose,
+                Volume = item.Volume,
+            };
+        }
     }
 }
