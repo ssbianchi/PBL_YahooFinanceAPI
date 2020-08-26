@@ -1,0 +1,24 @@
+﻿<Window x:Class="PBL_YahooFinance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PBL_YahooFinance"
+        
+        xmlns:Views="clr-namespace:PBL_YahooFinance.Views"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="10" HorizontalAlignment="Center" FontSize="32" Text="Corretora ABC"/>
+
+        <Views:LoadHistoricalPriceView Grid.Row="2" Margin="25" DataContext="{Binding LoadHistoricalPriceViewModel}"/>
+    </Grid>
+</Window>
