@@ -92,6 +92,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BLL\Converter.cs" />
+    <Compile Include="Commands\AsyncCommandBase.cs" />
+    <Compile Include="Commands\AsyncRelayCommand.cs" />
     <Compile Include="ViewModels\LoadHistoricalPriceViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\LoadHistoricalPriceView.xaml.cs">
